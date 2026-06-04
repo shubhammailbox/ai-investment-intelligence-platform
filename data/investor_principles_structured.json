@@ -1,0 +1,40 @@
+{
+  "principles": [
+    {
+      "framework": "Portfolio Construction",
+      "author": "Ramdeo Agarwal",
+      "principle": "Diversification",
+      "details": "A strong long-term portfolio should include equity, debt mutual funds, and international exposure such as FAANG ETFs to ensure diversification across asset classes and geographies.",
+      "time_horizon": "5+ years",
+      "tags": ["portfolio", "diversification", "long-term"]
+    },
+    {
+      "framework": "Behavioral Investing",
+      "author": "Warren Buffett",
+      "principle": "Value Investing",
+      "details": "Investors should be fearful when others are greedy and greedy when others are fearful. Markets often overreact to emotions, creating opportunities to invest in undervalued stocks.",
+      "tags": ["value investing", "market psychology"]
+    },
+    {
+      "framework": "Stock Picking",
+      "author": "Charlie Munger",
+      "principle": "Buy high-performing companies",
+      "details": "Invest in companies with strong management, consistent performance, and high return ratios such as ROE and ROCE.",
+      "tags": ["stocks", "fundamentals"]
+    },
+    {
+      "framework": "QGLP Framework",
+      "author": "Motilal Oswal AMC",
+      "principle": "How to buy stocks which can become potential multibaggers",
+      "details": "The Motilal Oswal QGLP framework is a proprietary investment philosophy focused on identifying high-quality, long-term wealth creators. It stands for Quality (business & management), Growth (earnings), Longevity (of growth), and Price (fair valuation). This framework prioritizes buying high-quality businesses with durable competitive advantages at reasonable prices.",
+      "tags": ["stocks", "multibaggers"]
+    },
+      {
+      "framework": "Strategy for retail investor as per ICICI prudential mutual fund ",
+      "author": "Shankaran Naren",
+      "principle": "Should we hold cash for the right time in the market",
+      "details": "Shankaran Naren sir is saying more about asset allocation and conviction.",
+      "tags": ["Cash", "timing the market"]
+    }
+  ]
+}

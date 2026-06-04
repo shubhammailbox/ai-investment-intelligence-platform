@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Mac
+.DS_Store
+
+# LangSmith / Secrets
+*.env
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
