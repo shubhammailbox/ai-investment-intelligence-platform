@@ -77,63 +77,91 @@ Example Output:
 
 ## High-Level Architecture
 
-Data Sources
+Financial Knowledge Base
+        ↓
+OpenAI Embeddings
+        ↓
+FAISS Vector Store
+        ↓
+RAG Pipeline
+        ↓
+LangSmith Tracing
+        ↓
+RAGAS Evaluation
+        ↓
+LangGraph Workflow
+        ↓
+Conditional Routing
 
-* Earnings Call Transcripts
-* Financial News
-* Market Data APIs
 
-Data Pipeline
+## Low level Architecture
 
-* Python ingestion pipelines
-* Data storage in AWS S3
+User Query
+     │
+     ▼
+LangGraph Router
+     │
+ ┌───┴────┐
+ ▼        ▼
+ETF     RAG
+Path    Path
+         │
+         ▼
+    FAISS Vector Store
+         │
+         ▼
+    OpenAI LLM
+         │
+         ▼
+     Response
 
-Processing Layer
+Observability:
+LangSmith
 
-* Databricks
-* Apache Spark
-* Delta Lake
+Evaluation:
+RAGAS
 
-AI Layer
+## Current Features 
 
-* NLP analysis
-* embeddings
-* sentiment detection
-* narrative clustering
-
-Presentation Layer
-
-* Streamlit dashboard
-* investment intelligence insights
-
----
+✓ Financial Knowledge Base
+✓ Semantic Search using FAISS
+✓ Retrieval Augmented Generation (RAG)
+✓ LangSmith Observability
+✓ RAGAS Evaluation
+✓ LangGraph Workflows
+✓ Conditional Routing
+✓ ETF Query Routing
 
 ## Technology Stack
 
-**Data Engineering**
+Python
+OpenAI
+LangChain
+LangGraph
+FAISS
+RAGAS
+LangSmith
+AWS (Upcoming)
+Bedrock (Upcoming)
 
-* Python
-* Apache Spark
-* Databricks
-* Delta Lake
+## Current Agent Workflow
 
-**Cloud Infrastructure**
+Current LangGraph Workflow
 
-* AWS S3
-* AWS data services
+START
+  ↓
+Router Node
+  ↓
+ ┌──────────────┬──────────────┐
+ ▼              ▼
+ETF Path      RAG Path
+ ↓              ↓
+END         Retrieve Docs
+                 ↓
+           Generate Answer
+                 ↓
+                END
 
-**AI / Machine Learning**
-
-* LLMs
-* NLP models
-* embeddings
-* vector databases
-
-**Visualization**
-
-* Streamlit dashboards
-
----
 
 ## Project Goals
 
@@ -142,54 +170,90 @@ Presentation Layer
 * Extract signals from earnings transcripts and financial narratives
 * Provide investors with objective decision-support insights
 
----
-
-## Roadmap
-
-Phase 1 – Data Foundation
-
-* Setup AWS data lake
-* Build financial data ingestion pipelines
-
-Phase 2 – Data Processing
-
-* Process datasets using Databricks and Spark
-* Build structured financial data tables
-
-Phase 3 – AI Analysis
-
-* Sentiment analysis on earnings transcripts
-* Narrative detection
-
-Phase 4 – Intelligence Engine
-
-* Market narrative tracking
-* investment timing indicator
-
-Phase 5 – Dashboard
-
-* Interactive investor insights dashboard
-
----
 
 ## Repository Structure
 
-```
-data_ingestion/
-data_processing/
 ai_models/
+├── agents/
+│   └── langgraph/
+│       ├── state.py
+│       ├── nodes.py
+│       ├── financial_graph.py
+│       └── run_graph.py
+│
+├── rag/
+│   ├── embeddings.py
+│   ├── retrieval.py
+│   ├── rag_pipeline.py
+│   ├── test_rag.py
+│   └── evaluation/
+│       └── evaluate_rag.py
+│
 analytics/
-dashboard/
-docs/
-```
+│   ├── earnings_pipeline.py
+data/
+│   ├── investors_principles_structured.json
+data_ingestion/
+│   ├── earnings_calls_pipeline.py
 
----
 
-## Future Vision
+## AI Engineering Capabilities Demonstrated
+
+✓ Retrieval Augmented Generation (RAG)
+✓ Vector Databases (FAISS)
+✓ Embeddings
+✓ LangGraph Workflow Orchestration
+✓ Conditional Routing
+✓ Observability (LangSmith)
+✓ Evaluation Frameworks (RAGAS)
+✓ Modular AI System Design
+✓ Environment-Based Configuration
+
+
+## Road Map & Future Vision
+
+Completed
+---------
+✓ RAG Pipeline
+✓ LangSmith
+✓ RAGAS
+✓ LangGraph
+✓ Conditional Routing
+
+Upcoming
+---------
+□ Tool Calling
+□ Yahoo Finance Integration
+□ Multi-Agent Architecture
+□ FastAPI
+□ Docker
+□ AWS ECS/Fargate
+□ AWS Bedrock
+□ Production Deployment
 
 The long-term vision is to build a **comprehensive AI-powered investment research platform** that helps investors analyze corporate commentary, market narratives, and macro signals to make more informed long-term investment decisions.
 
 ---
+
+## Installation
+
+```bash
+git clone <repo>
+cd ai-investment-intelligence-platform
+
+python -m venv venv
+source venv/bin/activate
+
+pip install -r requirements.txt
+```
+
+Create a `.env` file:
+
+```env
+OPENAI_API_KEY=your_key
+LANGCHAIN_API_KEY=your_key
+```
+
 
 ## Author
 
