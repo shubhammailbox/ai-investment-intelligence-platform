@@ -29,7 +29,7 @@ def main():
     #query = "What are key investing principles?"
     #query = "How can I find multibagger stocks?"
     #query = "How can I invest in US markets for Vanguard ETF's"
-    query = "How should I build a long term portfolio?"
+    query = "How should I build a long term portfolio for moderate investor type?"
 
     # Run pipeline where we are retrieving as well
     answer, docs = build_full_rag_pipeline(query, vector_store)

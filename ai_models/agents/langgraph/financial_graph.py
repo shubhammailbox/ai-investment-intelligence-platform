@@ -6,7 +6,7 @@ Purpose:
 This module defines and builds the LnagGraph workflow orchestration
 fro the AI-powered financial intelligence system.
 
-The workflow raph coordinates the execution order of AI nodes,
+The workflow graph coordinates the execution order of AI nodes,
 allowing the system to perform multi-step reasoning and execution.
 
 

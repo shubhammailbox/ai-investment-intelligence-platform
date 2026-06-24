@@ -70,9 +70,12 @@ def main():
     # Step4: Create Initial Workflow State
     # This is the same state object that we created in notebook now its getting productonized
     initial_state = {
-   #"query"     : "How should I build a long term portfolio for multibaggers?",
-   # "query"     : "What are the best Vanguard ETFs?",
-    "query"     : "Give me some suggestions for the stock picking",
+    #"query"     : "How should I build a long term portfolio for multibaggers?",
+    #"query"     : "What are the best Vanguard ETFs?",
+    #"query"     : "Give me some suggestions for the stock picking",
+    #"query"     : "US & Korea stocks are at all time high, just wondering what should i do now? should i buy or wait?",
+    #"query"     : "What should be the asset allocation for next 10 years?",
+    "query"     : "Tell me about VTI ETF",
     "documents" : [],
     "answer"    : "",
     "vector_store": vector_store,

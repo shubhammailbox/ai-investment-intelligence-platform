@@ -42,6 +42,7 @@ Shubham Mishra
 
 from langchain_openai import ChatOpenAI
 from ai_models.rag.retriever.retrieval import retrieve_documents
+from ai_models.tools.etf_tools import get_etf_data
 
 def retrieve_documents_node(state):
     """
@@ -145,30 +146,78 @@ def router_node(state):
     }
 
 def etf_node(state):
-    """
-    ETF workflow node.
 
-    This is currently a placeholder node.
-    Future versions will integrate
-    Yahoo Finance or other ETF APIs.
+    """
+    ETF Agent node.
+    
+    Purpose:
+    -----------
+    Handles ETF related user queries.
+
+    Responsibilities:
+    ----------------
+    - Read query from state
+    - Extract ETF ticker
+    - Call ETF Tool
+    - Generate user friendly answer
+    - Update workflow state
+
+    Returns:
+    -----------
+    Updated State Dictionary
     """
 
     print("\n--- ETF NODE RUNNING ---\n")
 
-    return {
-                "answer": """
-        Popular ETFs include:
+    # Read User Query
+    query = state["query"]
+    print(f"User Query: {query}")
 
-        1. Vanguard S&P 500 ETF (VOO)
-        2. Vanguard Total Stock Market ETF (VTI)
-        3. Vanguard FTSE All World ETF (VWRA)
-        """
+    # ETF node should decide the ETF
+    if   "voo" in query.lower():
+        ticker = "VOO"
+    elif "vti" in query.lower():
+        ticker = "VTI"
+    elif "vwra" in query.lower():
+        ticker = "VWRA"
+    elif "qqqm" in query.lower():
+        ticker = "QQQM"
+    elif "soxx" in query.lower():
+        ticker = "SOXX"
+    else: 
+        ticker = "VOO"
+    
+    # call the ETF tool now from /tools
+    print(f"Ticker Selected: {ticker}")
+
+    etf_data = get_etf_data.invoke(
+        {
+        "ticker": ticker
+        }
+    )
+    
+    # create the answer and call it
+    answer = f"""
+    
+    ETF Information:
+
+    Ticker: {etf_data["ticker"]}
+    Name: {etf_data["name"]}
+    Expense Ratio: {etf_data["expense_ratio"]}
+    Category:{etf_data["category"]}
+
+    """
+
+    return {
+                "answer": answer
     }
 
+    
 def route_query(state):
+    
     """
-    Return routing decision
-    for LangGraph conditional edges.
+    Return routing decision 
+    for LangGraph conditional edges
     """
 
     return state["route"]
