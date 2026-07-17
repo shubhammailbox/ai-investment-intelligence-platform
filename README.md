@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **AI Investment Intelligence Platform** is a data-driven system designed to help long-term investors make informed investment decisions by analyzing financial data, corporate earnings commentary, and market narratives.
+The **Dhyanful Finance is an AI Investment Reserach Platform** that combines market data, investment knowledge, financial analysis, and AI reasoning to help investors make explainable investment decisions.
 
 Unlike traditional stock screeners or trading tools, this platform focuses on **investment intelligence**, helping investors understand broader market signals, corporate sentiment, and macro narratives that influence long-term investment outcomes.
 

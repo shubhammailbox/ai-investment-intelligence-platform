@@ -52,43 +52,22 @@ if not os.getenv("OPENAI_API_KEY"):
 from ai_models.rag.ingestion.load_data import load_investor_principles
 from ai_models.rag.embeddings import create_vector_store
 from ai_models.agents.langgraph.financial_graph import build_financial_graph
+from ai_models.agents.langgraph.graph_service import run_research
 
 def main():
-    
-    # Step1: Load structured financial knowledge
-    documents = load_investor_principles()
-    print(f"\n Loaded {len(documents)} documents")
 
-    # Step2: Create vector database
-    vector_store = create_vector_store(documents)
-    print("\nVector store created successfully")
-
-    # Step3: Build Graph
-    graph = build_financial_graph()
-    print("\nFinancial workflow graph compiled")
-
-    # Step4: Create Initial Workflow State
-    # This is the same state object that we created in notebook now its getting productonized
-    initial_state = {
     #"query"     : "How should I build a long term portfolio for multibaggers?",
-    #"query"     : "What are the best Vanguard ETFs?",
-    #"query"     : "Give me some suggestions for the stock picking",
-    #"query"     : "US & Korea stocks are at all time high, just wondering what should i do now? should i buy or wait?",
-    #"query"     : "What should be the asset allocation for next 10 years?",
-    "query"     : "Tell me about VTI ETF",
-    "documents" : [],
-    "answer"    : "",
-    "vector_store": vector_store,
-    "route":""
-                    }
+    #"query"    : "What are the best Vanguard ETFs?",
+    #"query"    : "Give me some suggestions for the stock picking",
+    #"query"    : "US & Korea stocks are at all time high, just wondering what should i do now? should i buy or wait?",
+    #"query"    : "What should be the asset allocation for next 10 years?",
+    #"query"    : "Tell me about NVDA stock and if its worth buying now",
     
-    # Step5 - Execute LangGraph workflow
-    result = graph.invoke(initial_state)
+    query = input("Enter your question: ")
 
-    # Step6 - Print Final Answer
-    print("\n----- FINAL ANSWER -----\n")
-    print(result["answer"])
+    answer = run_research(query)
 
+    print(answer)
 
 if __name__ == "__main__":
     main()

@@ -3,8 +3,8 @@ financial_graph.py
 
 Purpose:
 --------
-This module defines and builds the LnagGraph workflow orchestration
-fro the AI-powered financial intelligence system.
+This module defines and builds the LangGraph workflow orchestration
+for the AI-powered financial intelligence system.
 
 The workflow graph coordinates the execution order of AI nodes,
 allowing the system to perform multi-step reasoning and execution.
@@ -17,12 +17,12 @@ START
 Router
   ↓
  ┌──────────────┬──────────────┐
- ↓              ↓
-ETF         Retrieve Documents
- ↓              ↓
-END         Generate Answer
-              ↓
-             END
+ ↓                            ↓
+market_research         Retrieve Documents
+ ↓                            ↓
+END                     Generate Answer
+                              ↓
+                            END
 
 Why This File Exists:
 ---------------------
@@ -64,7 +64,7 @@ from ai_models.agents.langgraph.nodes import (
   retrieve_documents_node,
   generate_answer_node,
   router_node,
-  etf_node,
+  market_data_node,
   route_query
 )
 
@@ -79,6 +79,9 @@ def build_financial_graph():
     """
     
     # create workflow object
+    # It is the object representing our AI workflow.
+    # Everything gets attached to it, nodes, edges, router, state
+
     workflow = StateGraph(FinancialAgentState)
 
     # Add workflow nodes
@@ -89,8 +92,8 @@ def build_financial_graph():
     )
 
     workflow.add_node(
-        "etf",
-        etf_node
+        "market_research",
+        market_data_node
     )
 
     workflow.add_node(
@@ -114,14 +117,14 @@ def build_financial_graph():
         "router",
         route_query,
       {
-          "etf": "etf",
+          "market_research": "market_research",
           "rag": "retrieve_documents"
       }
     )
 
      # add edge between etf and end
     workflow.add_edge(
-      "etf",
+      "market_research",
       END 
                     )
     # add edge between retrieve and answer same like graph

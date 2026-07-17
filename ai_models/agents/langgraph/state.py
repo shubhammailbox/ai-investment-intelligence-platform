@@ -44,3 +44,4 @@ class FinancialAgentState(TypedDict):
 
     # stored routing decision
     route: str
+    market_data: str

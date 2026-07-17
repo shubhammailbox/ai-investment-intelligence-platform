@@ -8,7 +8,11 @@ def retrieve_documents(query:str, vector_store, k: int = 5) -> List[Document]:
     
     """
 
-    Retrieve relevant documents based on user query
+    Retrieve relevant documents based on user query.
+
+    Imp:During retrieval when similarity_search(query) is executed,
+    LangChain autoamtically converts the user query into an embedding using the 
+    same embedding model.
 
     What input does it need?
     Args:

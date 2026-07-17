@@ -22,12 +22,14 @@ Current Nodes:
    - Calls the LLM using prompt-based reasoning
    - Updates workflow state with final generated answer
 
-03.06.2026   
 3. router_node
    - Determine which workflow path should execute based on user query.
 
-4. etf_node
-    - ETF path if its in the query 
+4. market_data_node
+   - 
+
+5. investment_research_node
+   -
    
 Architecture Role:
 ------------------
@@ -42,7 +44,7 @@ Shubham Mishra
 
 from langchain_openai import ChatOpenAI
 from ai_models.rag.retriever.retrieval import retrieve_documents
-from ai_models.tools.etf_tools import get_etf_data
+from ai_models.tools.market_data_tools import get_market_data
 
 def retrieve_documents_node(state):
     """
@@ -134,8 +136,19 @@ def router_node(state):
 
     query = state["query"].lower()
 
-    if "etf" in query:
-        route = "etf"
+    market_keywords = [
+    "etf",
+    "stock",
+    "stocks",
+    "share",
+    "shares",
+    "equity",
+    "mutual fund",
+    "mutual funds",
+    "index fund" ]
+    
+    if any(keyword in query for keyword in market_keywords):
+        route = "market_data"
     else:
         route = "rag"
 
@@ -145,7 +158,7 @@ def router_node(state):
         "route": route
     }
 
-def etf_node(state):
+def market_data_node(state):
 
     """
     ETF Agent node.
@@ -167,50 +180,98 @@ def etf_node(state):
     Updated State Dictionary
     """
 
-    print("\n--- ETF NODE RUNNING ---\n")
+    print("\n--- MARKET DATA NODE RUNNING ---\n")
 
     # Read User Query
     query = state["query"]
     print(f"User Query: {query}")
 
-    # ETF node should decide the ETF
+    # Determine financial symbol from user query
     if   "voo" in query.lower():
-        ticker = "VOO"
+        symbol = "VOO"
     elif "vti" in query.lower():
-        ticker = "VTI"
+        symbol = "VTI"
     elif "vwra" in query.lower():
-        ticker = "VWRA"
-    elif "qqqm" in query.lower():
-        ticker = "QQQM"
-    elif "soxx" in query.lower():
-        ticker = "SOXX"
-    else: 
-        ticker = "VOO"
+        symbol = "VWRA"
+    elif "AAPL" in query.upper():
+        symbol = "AAPL"
+    elif "MSFT" in query.upper():
+        symbol = "MSFT"
+    elif "NVDA" in query.upper():
+        symbol = "NVDA"
+    else:
+        symbol = "VTI"
     
     # call the ETF tool now from /tools
-    print(f"Ticker Selected: {ticker}")
-
-    etf_data = get_etf_data.invoke(
+    market_data = get_market_data.invoke (
         {
-        "ticker": ticker
+        "symbol":symbol
         }
     )
     
     # create the answer and call it
     answer = f"""
     
-    ETF Information:
+    Market Information
 
-    Ticker: {etf_data["ticker"]}
-    Name: {etf_data["name"]}
-    Expense Ratio: {etf_data["expense_ratio"]}
-    Category:{etf_data["category"]}
+    Symbol:
+    {market_data["symbol"]}
+
+    Name:
+    {market_data["name"]}
+
+    Instrument Type:
+    {market_data["instrument_type"]}
+
+    Current Price:
+    {market_data["current_price"]}
+
+    Currency:
+    {market_data["currency"]}
 
     """
 
     return {
                 "answer": answer
     }
+
+def investment_research_node(state):
+    """
+    
+    AI Investment Research Agent.
+
+    Purpose:
+    --------
+    Performs investment research by combining multiple
+    sources of information before generating a recommendation.
+
+    Workflow:
+    --------
+    1. Retrieve live market data
+    2. Retreive investments principles (RAG)
+    3. Combine both
+    4. Ask LLM to reason
+    5. Return Investment Recommendation
+
+    Example:
+    --------
+    Suppose if user asks  - Should I invest 1000$ in NVDA share, what would your agent do?
+    It would check what NVDA is and get its current market information, then it recalls 
+    Buffet's investment principles on good valuation, think about user question and then 
+    do some recommendation. This node is doing all the thinking.
+    
+    """
+    print("\n *** Investment Research Node Running ***")
+
+    # Step1: Retrieve the live market data
+
+    # Step2: Retrieve investment knowledge from RAG
+
+    # Step3: Combine both sources
+
+    # Step4: Ask the LLM to reason over the combined context
+
+    # Step5: Retrun the investment recommendation
 
     
 def route_query(state):

@@ -49,6 +49,13 @@
       "principle": "What should be the investment strategy for retail investors for next 10 years?",
       "details": "Firstly as per naren sir we need to conviince investors that they should not excpect highrer than 12%-15% retun in coming years",
       "tags": ["Equity returns", "Investment Stratgey"]
+    },
+      {
+      "framework": "Chase short term or long term",
+      "author": "Morgan Housel - The Psychology of money",
+      "principle": "What to do in a bubble market",
+      "details": "Bubbles do their damage when long term investors playing one game start taking their cues from the short term traders playing another - The Psychology of money ",
+      "tags": ["Bubble", "Investment Stratgey"]
     }
   ]
 }
