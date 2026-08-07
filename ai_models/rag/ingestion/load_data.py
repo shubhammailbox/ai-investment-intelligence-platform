@@ -1,7 +1,7 @@
 import json
 import os
 from typing import List
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 
 def load_investor_principles(path: str = "data/investor_principles_structured.json") -> List[Document]:

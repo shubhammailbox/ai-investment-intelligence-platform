@@ -32,7 +32,7 @@ Current Workflow State Includes:
 """
 
 from typing import TypedDict, List, Any
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 
 class FinancialAgentState(TypedDict):

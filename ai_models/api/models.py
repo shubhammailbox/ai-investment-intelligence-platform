@@ -3,8 +3,7 @@ models.py
 
 Purpose
 -------
-Defines the request and response models
-used by the FastAPI application.
+Defines the request and response models used by the FastAPI application.
 
 Using Pydantic models gives us:
 - Automatic validation

@@ -1,6 +1,6 @@
 
 from typing import List,Tuple
-from langchain.schema import Document
+from langchain_core.documents import Document
 from langchain_openai import ChatOpenAI
 from langsmith import traceable
 

@@ -39,9 +39,6 @@ Author:
 Shubham Mishra
 """
 
-from dotenv import load_dotenv
-
-load_dotenv()
 import os
 
 if not os.getenv("OPENAI_API_KEY"):
@@ -49,14 +46,11 @@ if not os.getenv("OPENAI_API_KEY"):
         "OPENAI_API_KEY not found. Please check your .env file."
     )
 
-from ai_models.rag.ingestion.load_data import load_investor_principles
-from ai_models.rag.embeddings import create_vector_store
-from ai_models.agents.langgraph.financial_graph import build_financial_graph
 from ai_models.agents.langgraph.graph_service import run_research
 
 def main():
 
-    #"query"     : "How should I build a long term portfolio for multibaggers?",
+    #"query"     : "How should I build a long term portfolio for multibaggers?"
     #"query"    : "What are the best Vanguard ETFs?",
     #"query"    : "Give me some suggestions for the stock picking",
     #"query"    : "US & Korea stocks are at all time high, just wondering what should i do now? should i buy or wait?",

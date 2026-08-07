@@ -1,3 +1,17 @@
+"""
+
+My implementation has two stages. During indexing, I use embeddings.py 
+to convert all documents into vector embeddings and store them in a FAISS vector database. 
+This happens once when the knowledge base is prepared. During retrieval, retrieval.py 
+receives the user's question. LangChain automatically converts that question into an 
+embedding using the same embedding model, performs a similarity search against the 
+stored vectors, and returns the most relevant documents. My RAG pipeline then uses those 
+retrieved documents as context for the LLM to generate an accurate, grounded response."
+
+"""
+
+
+
 import os
 
 from dotenv import load_dotenv
