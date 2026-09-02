@@ -142,7 +142,7 @@ def router_node(state):
     "shares"]
     
     if any(keyword in query for keyword in market_keywords):
-        route = "market_data"
+        route = "market_research"
     else:
         route = "rag"
 
