@@ -1,6 +1,6 @@
 {
   "principles": [
-    {
+    { 
       "framework": "Portfolio Construction",
       "author": "Ramdeo Agarwal",
       "principle": "Diversification",
@@ -56,6 +56,20 @@
       "principle": "What to do in a bubble market",
       "details": "Bubbles do their damage when long term investors playing one game start taking their cues from the short term traders playing another - The Psychology of money ",
       "tags": ["Bubble", "Investment Stratgey"]
+    },
+      {
+      "framework": "flexicap funds and multicap mutual funds",
+      "author": "Dhirendra Kumar - Value Investing",
+      "principle": "How to choose correct flexicap or multicap funds?",
+      "details": "First short list the funds where the same fund manager has been incharge for atleats three years. Second and most importantly is to choose fund that have consistently generated alpha over their benchmark",
+      "tags": ["multicap", "flexicap"]
+    },
+    {
+      "framework": "MEETS Framework, Abacus Asset Mgmt.",
+      "author": "Sunil Singhania",
+      "principle": "How to choose correct stocks for long term compounding and huge returns?",
+      "details": "Follow the Framework: MEETS i.e. M--> Good management and high ROCE and ROE, E --> High Earnings, E --> Event based for example government policies changes, T--> Timing the stcoks and S--> Strucuture based investing ",
+      "tags": ["stocks", "framework"]
     }
   ]
 }

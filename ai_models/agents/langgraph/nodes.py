@@ -138,14 +138,8 @@ def router_node(state):
 
     market_keywords = [
     "etf",
-    "stock",
-    "stocks",
     "share",
-    "shares",
-    "equity",
-    "mutual fund",
-    "mutual funds",
-    "index fund" ]
+    "shares"]
     
     if any(keyword in query for keyword in market_keywords):
         route = "market_data"

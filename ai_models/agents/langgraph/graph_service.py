@@ -39,6 +39,7 @@ def run_research(query: str):
         "route": ""
     }
 
+    #LangGraph, start executing workflow using this initial state
     result = graph.invoke(initial_state)
 
     return result["answer"]
