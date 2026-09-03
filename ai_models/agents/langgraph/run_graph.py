@@ -15,9 +15,7 @@ WHAT THIS FILE DOES:
 
 IMPORTANT:
 ----------
-This file does NOT define the LangGraph workflow.
-
-It simply starts the execution.
+This file does NOT define the LangGraph workflow.It simply starts the execution.
 
 Execution flow:
 
@@ -61,6 +59,10 @@ state.py = "Define the shared data that flows between nodes."
 """
 
 import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 if not os.getenv("OPENAI_API_KEY"):
     raise ValueError(
