@@ -70,6 +70,13 @@
       "principle": "How to choose correct stocks for long term compounding and huge returns?",
       "details": "Follow the Framework: MEETS i.e. M--> Good management and high ROCE and ROE, E --> High Earnings, E --> Event based for example government policies changes, T--> Timing the stcoks and S--> Strucuture based investing ",
       "tags": ["stocks", "framework"]
+    },
+        {
+      "framework": "Mutual Fund Allocation Strategy",
+      "author": "Dhirendra Kumar - Value Investing",
+      "principle": "How many funds to keep in a well balanced portfolio",
+      "details": "Having a large portion of your portfolio (e.g., 40-50%) in one fund is common due to long-term compounding. This isn't inherently bad in your early investment years, but it becomes a significant risk as your corpus grows and you accumulate many years' worth of savings.There is no fixed monetary amount; it is subjective to your personal savings scale. Once a fund accounts for a large share of a substantial portfolio, you become overly reliant on a single fund manager's performance.Gradually bring your largest position down toward 33% or 25% by steering new capital elsewhere. ",
+      "tags": ["mutual-funds", "framework"]
     }
   ]
 }

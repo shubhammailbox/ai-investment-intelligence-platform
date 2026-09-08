@@ -128,8 +128,7 @@ def generate_answer_node(state):
 
 def router_node(state):
     """
-    Determine which workflow path should execute
-    based on the user query.
+    Determine which workflow path should execute based on the user query.
     """
 
     print("\n--- ROUTER NODE RUNNING ---\n")
@@ -155,78 +154,37 @@ def router_node(state):
 def market_data_node(state):
 
     """
-    ETF Agent node.
-    
-    Purpose:
-    -----------
-    Handles ETF related user queries.
-
-    Responsibilities:
-    ----------------
-    - Read query from state
-    - Extract ETF ticker
-    - Call ETF Tool
-    - Generate user friendly answer
-    - Update workflow state
-
-    Returns:
-    -----------
-    Updated State Dictionary
+    Use LLM tool calling to determine and retrieve market data 
+    for the financial instrument in the user query.
     """
 
-    print("\n--- MARKET DATA NODE RUNNING ---\n")
+    print("\n--- Market Data Node Running ---\n")
 
     # Read User Query
     query = state["query"]
     print(f"User Query: {query}")
 
-    # Determine financial symbol from user query
-    if   "voo" in query.lower():
-        symbol = "VOO"
-    elif "vti" in query.lower():
-        symbol = "VTI"
-    elif "vwra" in query.lower():
-        symbol = "VWRA"
-    elif "AAPL" in query.upper():
-        symbol = "AAPL"
-    elif "MSFT" in query.upper():
-        symbol = "MSFT"
-    elif "NVDA" in query.upper():
-        symbol = "NVDA"
-    else:
-        symbol = "VTI"
-    
-    # call the ETF tool now from /tools
-    market_data = get_market_data.invoke (
-        {
-        "symbol":symbol
-        }
+    # Initialize LLM
+    llm = ChatOpenAI(
+        model = "gpt-4o-mini"
     )
-    
-    # create the answer and call it
-    answer = f"""
-    
-    Market Information
 
-    Symbol:
-    {market_data["symbol"]}
+    # Give the LLM access to market-data-tool
+    llm_with_tools = llm.bind_tools(
+        [get_market_data]
+    )
 
-    Name:
-    {market_data["name"]}
+    #Ask the LLM to determine whether/how to use the tool
+    response = llm_with_tools.invoke(query)
 
-    Instrument Type:
-    {market_data["instrument_type"]}
+    print("\n ----LLM Response---")
+    print (response)
 
-    Current Price:
-    {market_data["current_price"]}
-
-    Currency:
-    {market_data["currency"]}
-
-    """
+    print("\n---Tool calls---")
+    print(response.tool_calls)
 
     return {
-                "answer": answer
+                "answer": "Tool calling test completed"
     }
 
 def investment_research_node(state):
@@ -271,8 +229,7 @@ def investment_research_node(state):
 def route_query(state):
     
     """
-    Return routing decision 
-    for LangGraph conditional edges
+    Return routing decision for LangGraph conditional edges
     """
 
     return state["route"]

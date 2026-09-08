@@ -29,13 +29,3 @@ def get_market_data(symbol: str):
     }
 
     return market_data
-
-if __name__=="__main__":
-
-    result = get_market_data.invoke(
-        {
-            "symbol": "NVDA"
-        }
-    )
-
-    print(result)
