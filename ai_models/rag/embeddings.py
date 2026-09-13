@@ -51,9 +51,9 @@ def create_vector_store(documents: List[Document]):
     Vector C → Microsoft document
 
     That's all. Later -  If the user query is - tell me about microsoft cloud business, 
-    in the similarity search it compares question vector i.e microsoft with 3 documents Amazon vector, 
-    Apple vector and microsoft vector from the embeddings. And it says Microsoft 98%,
-    Amazon-45%, Apple -10% and it returns Microft document.
+    in the similarity search it compares question vector i.e microsoft with 3 documents,
+    Amazon vector, Apple vector and microsoft vector from the embeddings. 
+    And it says Microsoft 98%,Amazon-45%, Apple -10% and it returns Microft document.
     
     Args:
         documents (List[Documents]): List of documents to index

@@ -12,14 +12,11 @@ def build_full_rag_pipeline(query: str, vector_store) -> Tuple[str, List[Documen
     """
     Execute full RAG pipeline
 
-    Now this is the brain of the system.
-    Goal of this pipeline is to take user query --> fetch the documents from vector DB
-    --> setup a context (augumentation)--> generate the result
-    
-    Take a user query and return an AI-generated answer using retrieved knowledge”
+    This is the brain of the system. Goal of this pipeline is to:
+    Take a user query and return an AI-generated answer using retrieved knowledge.
 
     Steps:
-    1. Retrive relevant documents
+    1. Retrive relevant documents from FAISS vector DB
     2. Build context
     3. Generate prompt
     4. Call LLM

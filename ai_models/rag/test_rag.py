@@ -2,10 +2,13 @@
 
 My implementation has two stages. During indexing, I use embeddings.py 
 to convert all documents into vector embeddings and store them in a FAISS vector database. 
+
 This happens once when the knowledge base is prepared. During retrieval, retrieval.py 
 receives the user's question. LangChain automatically converts that question into an 
 embedding using the same embedding model, performs a similarity search against the 
-stored vectors, and returns the most relevant documents. My RAG pipeline then uses those 
+stored vectors, and returns the most relevant documents. 
+
+My RAG pipeline then uses those 
 retrieved documents as context for the LLM to generate an accurate, grounded response."
 
 """
@@ -39,7 +42,8 @@ def main():
     # Step: Create vector store
     vector_store = create_vector_store(documents)
 
-    # Query
+    # Example User Query
+
     #query = "What are key investing principles?"
     #query = "How can I find multibagger stocks?"
     #query = "How can I invest in US markets for Vanguard ETF's"
@@ -48,7 +52,7 @@ def main():
     # Run pipeline where we are retrieving as well
     answer, docs = build_full_rag_pipeline(query, vector_store)
 
-    # Adding Evaluation Block As We need to check if LLM is hallucinating 
+    # Adding Evaluation Block as we need to check if LLM is hallucinating 
     data = {
     "question": [query],
     "answer": [answer],

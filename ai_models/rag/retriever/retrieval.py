@@ -34,10 +34,10 @@ def retrieve_documents(query:str, vector_store, k: int = 5) -> List[Document]:
     into another vector. The vector database then performs a similarity search to find
     the document vectors that are closest to the query vector.
 
-    For eg: If the user query is - tell me about microsoft cloud business, in the similarity 
-    search it compares question vector i.e microsoft with 3 documents Amazon vector, 
-    Apple vector and microsoft vector from the embeddings. And it says Microsoft 98%,
-    Amazon-45%, Apple -10% and it returns Microft document.
+    For eg: If the user query is - tell me about Microsoft cloud business, in the similarity 
+    search it compares question vector i.e microsoft with 3 documents in FAISS DB i.e. Amazon vector, 
+    Apple vector and Microsoft vector from the embeddings. And it says Microsoft 98%,
+    Amazon-45%, Apple -10% and it returns Microsoft document.
 
     What input does it need?
     Args:
